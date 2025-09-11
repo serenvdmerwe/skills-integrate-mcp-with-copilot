@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getTime(details) {
     // Extracts first time from schedule string
+    if (!details.schedule || typeof details.schedule !== "string") return "";
     const match = details.schedule.match(/(\d{1,2}:\d{2} [AP]M)/);
     return match ? match[0] : "";
   }
@@ -37,8 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchValue = activitySearch.value.trim().toLowerCase();
     if (searchValue) {
       filtered = filtered.filter(([name, details]) =>
-        name.toLowerCase().includes(searchValue) ||
-        details.description.toLowerCase().includes(searchValue)
+        (details.description ?? "").toLowerCase().includes(searchValue)
       );
     }
 
