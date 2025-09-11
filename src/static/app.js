@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (searchValue) {
       filtered = filtered.filter(([name, details]) =>
         (details.description ?? "").toLowerCase().includes(searchValue)
-        details.description.toLowerCase().includes(searchValue)
       );
     }
 
